@@ -37,7 +37,7 @@ function App() {
           </div>
         }
         footer={
-          <footer>
+          <footer className="line">
             <a href={REPO} target="_blank" rel="noopener noreferrer">
               Github
             </a>

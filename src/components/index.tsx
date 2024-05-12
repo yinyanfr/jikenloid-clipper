@@ -15,7 +15,10 @@ export function CopiableLine({ note }: { note: FormattedNote }) {
       if (startIndex !== undefined && endIndex !== undefined) {
         const start = parseInt(startIndex);
         const end = parseInt(endIndex);
-        const slicedNotes = [...formatted].slice(start, end + 1);
+        const slicedNotes = [...formatted].slice(
+          Math.min(start, end),
+          Math.max(start, end) + 1
+        );
         const notes = slicedNotes.map((e) => e.note).join("");
         e.clipboardData.setData("text/plain", notes);
         message.success(`已成功复制：${notes}`);
@@ -34,5 +37,5 @@ export function CopiableLine({ note }: { note: FormattedNote }) {
       </span>
     );
 
-  return <span>{line}</span>;
+  return <span className="non-select">{line}</span>;
 }
